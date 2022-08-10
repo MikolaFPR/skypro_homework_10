@@ -1,11 +1,16 @@
 from flask import Flask
 from functions import get_all, load_condidates, get_by_pk, get_by_skill
 
+# Обозначение констант и важных переменных
 FILENAME = "candidates.json"
 data = get_all(load_condidates(FILENAME))
 app = Flask(__name__)
 
 
+# Создание маршрутов
+# / - корень
+# /candidates/цифра - поиск кандитата по номеру
+# /skills/название скила - поиск кандидатов по запрашиваемому скилу
 @app.route('/')
 def index():
     output = '<pre>'
